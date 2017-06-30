@@ -1,0 +1,139 @@
+080484b4 <dummy>:
+ 80484b4:	55                   	push   ebp
+ 80484b5:	89 e5                	mov    ebp,esp
+ 80484b7:	83 ec 18             	sub    esp,0x18
+ 80484ba:	c7 45 fc 00 00 00 00 	mov    DWORD PTR [ebp-0x4],0x0
+ 80484c1:	8b 45 fc             	mov    eax,DWORD PTR [ebp-0x4]
+ 80484c4:	8d 14 85 00 00 00 00 	lea    edx,[eax*4+0x0]
+ 80484cb:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
+ 80484ce:	83 3c 02 00          	cmp    DWORD PTR [edx+eax*1],0x0
+ 80484d2:	74 3a                	je     804850e <dummy+0x5a>
+ 80484d4:	8b 45 fc             	mov    eax,DWORD PTR [ebp-0x4]
+ 80484d7:	8d 0c 85 00 00 00 00 	lea    ecx,[eax*4+0x0]
+ 80484de:	8b 55 0c             	mov    edx,DWORD PTR [ebp+0xc]
+ 80484e1:	8d 45 fc             	lea    eax,[ebp-0x4]
+ 80484e4:	ff 00                	inc    DWORD PTR [eax]
+ 80484e6:	c7 44 24 08 03 00 00 	mov    DWORD PTR [esp+0x8],0x3
+ 80484ed:	00 
+ 80484ee:	c7 44 24 04 38 87 04 	mov    DWORD PTR [esp+0x4],0x8048738 # "LOLO"
+ 80484f5:	08 
+ 80484f6:	8b 04 11             	mov    eax,DWORD PTR [ecx+edx*1]
+ 80484f9:	89 04 24             	mov    DWORD PTR [esp],eax
+ 80484fc:	e8 d7 fe ff ff       	call   80483d8 <strncmp@plt>
+ 8048501:	85 c0                	test   eax,eax
+ 8048503:	75 bc                	jne    80484c1 <dummy+0xd>
+ 8048505:	c7 45 f8 01 00 00 00 	mov    DWORD PTR [ebp-0x8],0x1
+ 804850c:	eb 07                	jmp    8048515 <dummy+0x61>
+ 804850e:	c7 45 f8 00 00 00 00 	mov    DWORD PTR [ebp-0x8],0x0
+ 8048515:	8b 45 f8             	mov    eax,DWORD PTR [ebp-0x8]
+ 8048518:	c9                   	leave  
+ 8048519:	c3                   	ret    
+
+0804851a <parell>:
+ 804851a:	55                   	push   ebp
+ 804851b:	89 e5                	mov    ebp,esp
+ 804851d:	83 ec 18             	sub    esp,0x18
+ 8048520:	8d 45 fc             	lea    eax,[ebp-0x4]
+ 8048523:	89 44 24 08          	mov    DWORD PTR [esp+0x8],eax
+ 8048527:	c7 44 24 04 3d 87 04 	mov    DWORD PTR [esp+0x4],0x804873d # "%d"
+ 804852e:	08 
+ 804852f:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+ 8048532:	89 04 24             	mov    DWORD PTR [esp],eax
+ 8048535:	e8 8e fe ff ff       	call   80483c8 <sscanf@plt>
+ 804853a:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
+ 804853d:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 8048541:	8b 45 fc             	mov    eax,DWORD PTR [ebp-0x4]
+ 8048544:	89 04 24             	mov    DWORD PTR [esp],eax
+ 8048547:	e8 68 ff ff ff       	call   80484b4 <dummy>                # Call dummy(????)
+ 804854c:	85 c0                	test   eax,eax
+ 804854e:	74 36                	je     8048586 <parell+0x6c>
+ 8048550:	c7 45 f8 00 00 00 00 	mov    DWORD PTR [ebp-0x8],0x0
+ 8048557:	83 7d f8 09          	cmp    DWORD PTR [ebp-0x8],0x9
+ 804855b:	7f 29                	jg     8048586 <parell+0x6c>
+ 804855d:	8b 45 fc             	mov    eax,DWORD PTR [ebp-0x4]
+ 8048560:	83 e0 01             	and    eax,0x1
+ 8048563:	85 c0                	test   eax,eax
+ 8048565:	75 18                	jne    804857f <parell+0x65>
+ 8048567:	c7 04 24 40 87 04 08 	mov    DWORD PTR [esp],0x8048740 # "Password OK!"
+ 804856e:	e8 45 fe ff ff       	call   80483b8 <printf@plt>
+ 8048573:	c7 04 24 00 00 00 00 	mov    DWORD PTR [esp],0x0
+ 804857a:	e8 69 fe ff ff       	call   80483e8 <exit@plt>
+ 804857f:	8d 45 f8             	lea    eax,[ebp-0x8]
+ 8048582:	ff 00                	inc    DWORD PTR [eax]
+ 8048584:	eb d1                	jmp    8048557 <parell+0x3d>
+ 8048586:	c9                   	leave  
+ 8048587:	c3                   	ret    
+
+08048588 <check>:
+ 8048588:	55                   	push   ebp
+ 8048589:	89 e5                	mov    ebp,esp
+ 804858b:	83 ec 28             	sub    esp,0x28
+ 804858e:	c7 45 f8 00 00 00 00 	mov    DWORD PTR [ebp-0x8],0x0
+ 8048595:	c7 45 f4 00 00 00 00 	mov    DWORD PTR [ebp-0xc],0x0
+ 804859c:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+ 804859f:	89 04 24             	mov    DWORD PTR [esp],eax
+ 80485a2:	e8 01 fe ff ff       	call   80483a8 <strlen@plt>
+ 80485a7:	39 45 f4             	cmp    DWORD PTR [ebp-0xc],eax
+ 80485aa:	73 4d                	jae    80485f9 <check+0x71>
+ 80485ac:	8b 45 f4             	mov    eax,DWORD PTR [ebp-0xc]
+ 80485af:	03 45 08             	add    eax,DWORD PTR [ebp+0x8]
+ 80485b2:	0f b6 00             	movzx  eax,BYTE PTR [eax]
+ 80485b5:	88 45 f3             	mov    BYTE PTR [ebp-0xd],al
+ 80485b8:	8d 45 fc             	lea    eax,[ebp-0x4]
+ 80485bb:	89 44 24 08          	mov    DWORD PTR [esp+0x8],eax
+ 80485bf:	c7 44 24 04 3d 87 04 	mov    DWORD PTR [esp+0x4],0x804873d
+ 80485c6:	08 
+ 80485c7:	8d 45 f3             	lea    eax,[ebp-0xd]
+ 80485ca:	89 04 24             	mov    DWORD PTR [esp],eax
+ 80485cd:	e8 f6 fd ff ff       	call   80483c8 <sscanf@plt>
+ 80485d2:	8b 55 fc             	mov    edx,DWORD PTR [ebp-0x4]
+ 80485d5:	8d 45 f8             	lea    eax,[ebp-0x8]
+ 80485d8:	01 10                	add    DWORD PTR [eax],edx
+ 80485da:	83 7d f8 10          	cmp    DWORD PTR [ebp-0x8],0x10
+ 80485de:	75 12                	jne    80485f2 <check+0x6a>
+ 80485e0:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
+ 80485e3:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 80485e7:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+ 80485ea:	89 04 24             	mov    DWORD PTR [esp],eax
+ 80485ed:	e8 28 ff ff ff       	call   804851a <parell>
+ 80485f2:	8d 45 f4             	lea    eax,[ebp-0xc]
+ 80485f5:	ff 00                	inc    DWORD PTR [eax]
+ 80485f7:	eb a3                	jmp    804859c <check+0x14>
+ 80485f9:	c7 04 24 4e 87 04 08 	mov    DWORD PTR [esp],0x804874e # "Password Incorrect!"
+ 8048600:	e8 b3 fd ff ff       	call   80483b8 <printf@plt>
+ 8048605:	c9                   	leave  
+ 8048606:	c3                   	ret    
+
+08048607 <main>:
+ 8048607:	55                   	push   ebp
+ 8048608:	89 e5                	mov    ebp,esp
+ 804860a:	81 ec 88 00 00 00    	sub    esp,0x88
+ 8048610:	83 e4 f0             	and    esp,0xfffffff0
+ 8048613:	b8 00 00 00 00       	mov    eax,0x0
+ 8048618:	83 c0 0f             	add    eax,0xf
+ 804861b:	83 c0 0f             	add    eax,0xf
+ 804861e:	c1 e8 04             	shr    eax,0x4
+ 8048621:	c1 e0 04             	shl    eax,0x4
+ 8048624:	29 c4                	sub    esp,eax
+ 8048626:	c7 04 24 63 87 04 08 	mov    DWORD PTR [esp],0x8048763 # "IOLI Crackme Level 0x06"
+ 804862d:	e8 86 fd ff ff       	call   80483b8 <printf@plt>
+ 8048632:	c7 04 24 7c 87 04 08 	mov    DWORD PTR [esp],0x804877c # "Password:"
+ 8048639:	e8 7a fd ff ff       	call   80483b8 <printf@plt>
+ 804863e:	8d 45 88             	lea    eax,[ebp-0x78]
+ 8048641:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 8048645:	c7 04 24 87 87 04 08 	mov    DWORD PTR [esp],0x8048787 # "%s"
+ 804864c:	e8 47 fd ff ff       	call   8048398 <scanf@plt>
+ 8048651:	8b 45 10             	mov    eax,DWORD PTR [ebp+0x10]
+ 8048654:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 8048658:	8d 45 88             	lea    eax,[ebp-0x78]
+ 804865b:	89 04 24             	mov    DWORD PTR [esp],eax
+ 804865e:	e8 25 ff ff ff       	call   8048588 <check>
+ 8048663:	b8 00 00 00 00       	mov    eax,0x0
+ 8048668:	c9                   	leave  
+ 8048669:	c3                   	ret    
+ 804866a:	90                   	nop
+ 804866b:	90                   	nop
+ 804866c:	90                   	nop
+ 804866d:	90                   	nop
+ 804866e:	90                   	nop
+ 804866f:	90                   	nop
